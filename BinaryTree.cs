@@ -42,6 +42,50 @@ namespace BinarySearchTree
                 }
             }
             public Node<T> Head;
+
+            public void Find(T _value)
+            {
+                var current = Head;
+                Node<T> FindThis = new Node<T>(_value);
+                if (Head == null)
+                {
+                    Console.WriteLine("This tree is empty!");
+                }
+                else if(current.value.CompareTo(FindThis.value) == 0)
+                {
+                    Console.WriteLine("The value {0} is at the Head of the tree", current.value);
+                }
+                else
+                {
+                    Console.WriteLine(current.value);
+                    while (current != null)
+                    {
+                        if (current.value.CompareTo(FindThis.value) < 0)
+                        {
+                            current = current.rightChild;
+                            if (current.value.CompareTo(FindThis.value) == 0)
+                            {
+                                Console.WriteLine(">" + current.value);
+                                break;
+                            }
+                            Console.WriteLine(">" + current.value);
+                        }
+
+                        if (current.value.CompareTo(FindThis.value) > 0)
+                        {
+                            current = current.leftChild;
+                            if (current.value.CompareTo(FindThis.value) == 0)
+                            {
+                                Console.WriteLine("<" + current.value);
+                                break;
+                            }
+                            Console.WriteLine("<" + current.value);
+                        }
+
+                    }
+                    
+                }
+            }
         }
 
         static void Main(string[] args)
