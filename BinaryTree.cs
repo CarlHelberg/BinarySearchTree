@@ -42,6 +42,41 @@ namespace BinarySearchTree
                 }
             }
             public Node<T> Head;
+
+            public Node<T> ReturnHead()
+            {
+                return Head;
+            }
+
+            public void Inorder(Node<T> _input)
+            {
+                if(_input != null)
+                {
+                    Inorder(_input.leftChild);
+                    Console.Write(_input.value + " ");
+                    Inorder(_input.rightChild);
+                }
+            }
+            
+            public void PostOrder(Node<T> _input)
+            {
+                if(_input != null)
+                {
+                    Inorder(_input.leftChild);
+                    Inorder(_input.rightChild);
+                    Console.Write(_input.value + " ");
+                }
+            }
+
+            public void PreOrder(Node<T> _input)
+            {
+                if(_input != null)
+                {
+                    Console.Write(_input.value + " ");
+                    Inorder(_input.leftChild);
+                    Inorder(_input.rightChild);
+                }
+            }
         }
 
         static void Main(string[] args)
