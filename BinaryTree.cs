@@ -42,6 +42,59 @@ namespace BinarySearchTree
                 }
             }
             public Node<T> Head;
+
+            public void Delete(T _value)
+            {
+                Node<T> DeleteThis = new Node<T>(_value);
+                var current = Head;
+
+                if (Head == null)
+                {
+                    Console.WriteLine("This tree is empty!"); 
+                    return;
+                }
+
+                else
+                {
+                    while (DeleteThis.CompareTo(current) != 0)
+                    {
+                        if (DeleteThis.CompareTo(current) < 0)
+                        { 
+                            if (DeleteThis.CompareTo(current) < 0 && current.leftChild == null)
+                            {
+                            Console.WriteLine("The value you are trying to delete does not exist in this tree");
+                            return;
+                            }
+                                current = current.leftChild;
+                        }
+                        else if (DeleteThis.CompareTo(current) > 0)
+                        {
+                            if (DeleteThis.CompareTo(current) > 0 && current.rightChild == null)
+                            {
+                                Console.WriteLine("The value you are trying to delete does not exist in this tree");
+                                return;
+                            }
+                            current = current.rightChild;
+                        }
+                    }
+
+                    if (DeleteThis.CompareTo(current) == 0)
+                    {
+                        if (current.leftChild != null)
+                        {
+                            current.leftChild.parent = current.parent;
+                            current.parent.leftChild = current.leftChild;
+                            current.leftChild = null;
+                        }
+                        if (current.rightChild != null)
+                        {
+                            current.rightChild.parent = current.parent;
+                            current.parent.rightChild = current.rightChild;
+                            current.rightChild = null;
+                        }
+                    }
+                }
+            }
         }
 
         static void Main(string[] args)
