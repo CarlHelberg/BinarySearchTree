@@ -19,6 +19,7 @@ namespace BinarySearchTree
 
                 public Node(T _value) 
                 {
+                    
                     value = _value;
                     leftChild = null;
                     rightChild = null;
